@@ -1,9 +1,10 @@
 defmodule BloodstoneWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :bloodstone
 
-  socket "/live", Phoenix.LiveView.Socket
+  socket "/live", Phoenix.LiveView.Socket,
   websocket: [timeout: 45_000],
   longpoll: false
+
   socket "/socket", BloodstoneWeb.UserSocket,
     websocket: true,
     longpoll: false
