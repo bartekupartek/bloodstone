@@ -1,0 +1,70 @@
+<div style="height: 100vh; display:flex; flex-direction: row;">
+    <div style="flex:.2; background-color:#212127; color:white; text-align: center;">
+        <h2 style="margin-top: 30px;">Demo</h2>
+         <div class="dropdown">
+            <style>
+                    /* Dropdown Button */
+                .dropbtn {
+                background-color: transparent;
+                color: white;
+                border: solid 1px;
+                }
+
+                /* The container <div> - needed to position the dropdown content */
+                .dropdown {
+                position: relative;
+                display: inline-block;
+                }
+
+                /* Dropdown Content (Hidden by Default) */
+                .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f1f1f1;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                }
+
+                /* Links inside the dropdown */
+                .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {background-color: #ddd;}
+
+                /* Show the dropdown menu on hover */
+                .dropdown:hover .dropdown-content {display: block;}
+
+                /* Change the background color of the dropdown button when the dropdown content is shown */
+                .dropdown:hover .dropbtn {background-color: white; color: black;} 
+            </style>
+            <button class="dropbtn"><%= @ref %></button>
+            <div class="dropdown-content">
+                <%= for version <- @version_list do %>
+                <a href=<%= "?ref=#{Map.get(version,"name")}" %>><%= Map.get(version,"name") %></a>
+                <% end %>
+            </div>
+            </div> 
+
+        <%= live_render(@conn, BloodstoneWeb.SidebarLive, session: %{content_list: @content_list, ref: @ref} )%>
+    </div>
+    <div style="flex:.8; padding: 30px;">
+        <h1>Writing Documentation</h1>
+        <%= raw @markdown %>
+        <script>window.onclick = function(e) {
+            e.preventDefault();
+            const href = e.target.href
+            if(href && !href.includes("ref")){
+                window.location.href = href + '<%= "?ref=#{@ref}" %>'
+            }else if(href){
+                window.location.href = href
+            }
+            };</script>
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+<div style="padding-left: 50px; padding-right: 50px;">
+  <div style="height: 50vh;text-align: center; padding-top: 20vh;">
+    <h1 style="font-size: 50px;">Use Git as your  <span style= "background-color: #90CAF9;">software documentation</span> </h1>
+  </div>
+  <div style="display:flex; flex-direction: row;">
+    <div style="flex:.3333; padding: 30px;">
+      <div>
+        <h3 style="text-align: center">Markdown</h3>
+        <h5 style="text-align: center">Document are written using markdown, this means that you are not tied to a specific IDE.</h5>
+      </div>
+    </div>
+    <div style="flex:.3333; padding: 30px;">
+      <div>
+        <h3 style="text-align: center">Version Control</h3>
+        <h5 style="text-align: center">Using Git means that you have the benefit of branching, merging and reviewing your software specification. You can easily switch between version of your software requirement specification.</h5>
+      </div>
+    </div>
+    <div style="flex:.3333; padding: 30px;">
+      <div>
+        <h3 style="text-align: center">UML Diagrams</h3>
+        <h5 style="text-align: center">Draw UML Diagram using Mermaid.</h5>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top: 20px;">
+    <a style="font-size: 40px;" href="/pages/auth/login.md?ref=v1.0">View Demo</a>
+  </div>
+</div>
+
