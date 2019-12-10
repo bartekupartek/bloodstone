@@ -42,7 +42,7 @@ IO.inspect route
 
   def get_download_url(version,path) do
     url = "https://api.github.com/repos/valehelle/srs/contents/#{path}?ref=#{version}"
-    headers = ["Authorization": "Bearer 036ea238cc8f925b7fa5dbd8137c79810b19bc2b", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Accept": "Application/json; Charset=utf-8"]
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, headers)
     body
      |> Poison.decode!
@@ -50,14 +50,14 @@ IO.inspect route
   end
 
   def get_markdown(url) do
-    headers = ["Authorization": "Bearer 036ea238cc8f925b7fa5dbd8137c79810b19bc2b", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Accept": "Application/json; Charset=utf-8"]
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, headers)
     {:ok, body}
   end
 
   def get_version_list() do
     url = "https://api.github.com/repos/valehelle/srs/branches"
-    headers = ["Authorization": "Bearer 036ea238cc8f925b7fa5dbd8137c79810b19bc2b", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Accept": "Application/json; Charset=utf-8"]
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, headers)
     body
      |> Poison.decode!
@@ -65,7 +65,7 @@ IO.inspect route
   
   def get_content_list(version, path) do
     url = "https://api.github.com/repos/valehelle/srs/contents/#{path}?ref=#{version}"
-    headers = ["Authorization": "Bearer 036ea238cc8f925b7fa5dbd8137c79810b19bc2b", "Accept": "Application/json; Charset=utf-8"]
+    headers = ["Accept": "Application/json; Charset=utf-8"]
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, headers)
     body = Poison.decode!(body)
     case is_list(body) do
