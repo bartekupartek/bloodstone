@@ -20,6 +20,7 @@ config :bloodstone, BloodstoneWeb.Endpoint,
 config :logger, level: :info
 
 config :bloodstone, Bloodstone.Repo,
+  url: "postgresql-cylindrical-32158",
   ssl: true,
   pool_size: 15
 
