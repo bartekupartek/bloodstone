@@ -7,7 +7,7 @@ defmodule BloodstoneWeb.SidebarLive do
   end
   def mount(session, socket) do
     
-    {:ok, assign(socket, current_path: "/")}
+    {:ok, assign(socket, current_path: "/", parent_path: "/")}
   end
   def handle_params(%{"path" => path_array, "ref" => ref}, _uri, socket) do
     path = Enum.join(path_array,"/")
@@ -16,13 +16,15 @@ defmodule BloodstoneWeb.SidebarLive do
 
     is_hard_link = is_hard_link(socket)
     is_directory = is_directory(path)
-    is_new_path = is_new_path(socket.assigns.current_path, new_path)
-
+    is_old_a_directory = is_directory(socket.assigns.current_path)
+    is_new_path = is_new_path(socket.assigns.parent_path, new_path)
+    
     version_list = get_version_list(socket, is_hard_link)
-    content_list = get_content_list(socket, is_hard_link, is_new_path, ref, path)
+    content_list = get_content_list(socket, is_hard_link, is_old_a_directory, is_directory, is_new_path, ref, path)
+
     html = get_markdown(socket, ref, path, is_hard_link, is_directory)
 
-    {:noreply, assign(socket,version_list: version_list, content_list: content_list, ref: ref, markdown: html, current_path: new_path)}
+    {:noreply, assign(socket,version_list: version_list, content_list: content_list, ref: ref, markdown: html, current_path: path, parent_path: new_path)}
   end
 
   def is_hard_link(socket) do
@@ -37,7 +39,7 @@ defmodule BloodstoneWeb.SidebarLive do
   end
 
   def is_new_path(current_path, new_path) do
-      !String.equivalent?(current_path, new_path)
+    !String.equivalent?(current_path, new_path)
   end
 
 
@@ -48,14 +50,23 @@ defmodule BloodstoneWeb.SidebarLive do
     end
   end
 
-  def get_content_list(socket, is_hard_link, is_new_path, ref, path) do
+  def get_content_list(socket, is_hard_link, is_old_a_directory, is_directory, is_new_path, ref, path) do
     case is_hard_link do 
       true -> PageController.get_content_list(ref, path)
-      false -> 
-        case is_new_path do
-          true -> PageController.get_content_list(ref, path) 
-          false -> socket.assigns.content_list
+      false ->
+        case is_directory do
+          true -> PageController.get_content_list(ref, path)
+          false -> 
+            case !is_old_a_directory and !is_directory do
+              true -> 
+                case is_new_path do
+                  true -> PageController.get_content_list(ref, path)
+                  false -> socket.assigns.content_list
+                end
+              false -> PageController.get_content_list(ref, path) 
+            end
         end
+
     end
   end
   

@@ -51,10 +51,13 @@
             </div>
             </div> 
             <br>
-            <%= @current_path %>
             <%= for content <- @content_list do %>
                 <div style="text-align: left; padding-left: 30px; margin-top: 10px;">
-                    <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color:white;"%>
+                    <%= if Map.get(content,"type") == "file" do %>
+                        <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color:white;"%>
+                    <% else %>
+                        <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color:white;  font-weight:bold"%>
+                    <% end %>
                 </div>
             <% end %>
 
@@ -64,7 +67,7 @@
         <%= raw @markdown %>
         <script>
             window.onclick = function(e) {    
-                if(!e.target.hasAttribute("data-phx-live-link") && e.target.href){
+                if(!e.target.hasAttribute("data-phx-live-link") && e.target.href && !e.target.href.includes("?ref=")){
                     e.preventDefault();
                     var href = e.target.href
                     var newHref = href + '<%= "?ref=#{@ref}" %>'
