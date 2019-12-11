@@ -22,7 +22,7 @@ config :logger, level: :info
 config :bloodstone, Bloodstone.Repo,
   url: System.get_env("DATABASE_URL"),
   ssl: true,
-  github_key: System.get_env("DATABASE_URL"),
+  github_key: System.get_env("GITHUB_KEY"),
   pool_size: 15
 
 # ## SSL Support

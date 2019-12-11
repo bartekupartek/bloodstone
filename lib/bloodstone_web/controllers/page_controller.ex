@@ -52,7 +52,6 @@ IO.inspect route
   def get_markdown(url) do
     headers = ["Authorization": "Bearer #{Application.get_env(:bloodstone, Bloodstone.Repo)[:github_key]}", "Accept": "Application/json; Charset=utf-8"]
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(url, headers)
-    IO.inspect body
     {:ok, body}
   end
 
