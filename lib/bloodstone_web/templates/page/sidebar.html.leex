@@ -51,6 +51,7 @@
             </div>
             </div> 
             <br>
+            <br>
             <%= for content <- @content_list do %>
                 <div style="text-align: left; padding-left: 30px; margin-top: 10px;">
                     <%= if Map.get(content,"type") == "file" do %>
@@ -62,8 +63,19 @@
             <% end %>
 
     </div>
-    <div style="flex:.8; padding: 30px; overflow:auto">
-        <div phx-hook="markdown">
+    <div style="flex:.8;  overflow:auto; padding-left: 30px;">
+        <div style="margin-top: 20px;">
+            <%= for {path, index} <-  Enum.with_index(@path_url) do %>
+                    <%= if index < length(@path_url) - 1 do %>
+                        <a href="<%= path %>"><%= get_path(path) %></a>
+                    <% else %>
+                        <span><%= get_path(path) %></span>
+                     <% end %>
+            
+                    <%= if index < length(@path_url) - 1 do " / " end %>
+            <% end %>
+        </div>
+        <div phx-hook="markdown" style = "margin-top: 30px;">
         <%= raw @markdown %>
         <script>
             window.onclick = function(e) {    

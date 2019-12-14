@@ -11,6 +11,7 @@ defmodule BloodstoneWeb.SidebarLive do
   end
   def handle_params(%{"path" => path_array, "ref" => ref}, _uri, socket) do
     path = Enum.join(path_array,"/")
+    path_url =  List.foldl(path_array, [], fn x, acc -> acc ++ ["#{List.last(acc)}/#{x}"] end)
     new_path = List.delete_at(path_array, -1)
                    |> Enum.join("/")
 
@@ -24,7 +25,7 @@ defmodule BloodstoneWeb.SidebarLive do
 
     html = get_markdown(socket, ref, path, is_hard_link, is_directory)
 
-    {:noreply, assign(socket,version_list: version_list, content_list: content_list, ref: ref, markdown: html, current_path: path, parent_path: new_path)}
+    {:noreply, assign(socket,version_list: version_list, content_list: content_list, ref: ref, markdown: html, current_path: path, parent_path: new_path, path_array: path_array, path_url: path_url)}
   end
 
   def is_hard_link(socket) do

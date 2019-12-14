@@ -8,4 +8,8 @@ defmodule BloodstoneWeb.PageView do
       end
     end
   end
+  def get_path(path) do
+    String.split(path, "/")
+    |> List.last()
+  end
 end
