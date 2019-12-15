@@ -1,5 +1,11 @@
+<style>
+        .nav-link:hover
+        { 
+            color: #fff!important;
+        }
+</style>
 <div style="height: 100vh; display:flex; flex-direction: row;">
-    <div style="flex:.2; background-color:#212127; color:white; text-align: center;">
+    <div style="flex:.2; background-color:#373f52; color:white; text-align: center;">
         <h2 style="margin-top: 30px;">Demo</h2>
          <div class="dropdown">
             <style>
@@ -50,32 +56,32 @@
                 <% end %>
             </div>
             </div> 
-            <br>
-            <br>
-            <%= for content <- @content_list do %>
-                <div style="text-align: left; padding-left: 30px; margin-top: 10px;">
-                    <%= if Map.get(content,"type") == "file" do %>
-                        <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color:white;"%>
+        <div style="text-align: left; padding-left: 30px; margin-bottom: 10px; margin-top: 40px;">
+            <%= for {path, index} <-  Enum.with_index(@path_url) do %>
+                <%= if index != 0 and !String.contains?(get_path(path), ".md") do " / " end %>
+                    <%= if index < length(@path_url) - 1 do %>
+                        <%= live_link  get_path(path), to: "#{path}?ref=#{@ref}", style: "color:#c1c3c9;", class: "nav-link" %>
                     <% else %>
-                        <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color:white;  font-weight:bold"%>
+                        <%= if !String.contains?(get_path(path), ".md") do %>
+                            <span><%= get_path(path) %></span>
+                        <% end %>
+                     <% end %>
+            <% end %>
+        </div>
+            <%= for content <- @content_list do %>
+                <div style="text-align: left; padding-left: 40px; margin-top: 10px;">
+                    <%= if Map.get(content,"type") == "file" do %>
+                        <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color: #{get_color(Map.get(content,"name"), @current_path)};", class: "nav-link" %>
+                    <% else %>
+                        <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color: #c1c3c9;  font-weight:bold", class: "nav-link"%>
                     <% end %>
                 </div>
             <% end %>
 
     </div>
-    <div style="flex:.8;  overflow:auto; padding-left: 30px;">
-        <div style="margin-top: 20px;">
-            <%= for {path, index} <-  Enum.with_index(@path_url) do %>
-                    <%= if index < length(@path_url) - 1 do %>
-                        <a href="<%= path %>"><%= get_path(path) %></a>
-                    <% else %>
-                        <span><%= get_path(path) %></span>
-                     <% end %>
-            
-                    <%= if index < length(@path_url) - 1 do " / " end %>
-            <% end %>
-        </div>
-        <div phx-hook="markdown" style = "margin-top: 30px;">
+    <div style="flex:.8;  overflow:auto;">
+
+        <div phx-hook="markdown" style = "margin-top: 30px; padding-left: 30px;">
         <%= raw @markdown %>
         <script>
             window.onclick = function(e) {    

@@ -71,6 +71,6 @@ config :bloodstone, Bloodstone.Repo,
   username: "postgres",
   password: "postgres",
   database: "bloodstone_dev",
-  github_key: "1f7b465632ab85b1a6628db53236ecf7a02da0be",
+  github_key: "1fdffe34cbc10acf58b43f3a2c1baa0dfc79124b",
   hostname: "localhost",
   pool_size: 10
