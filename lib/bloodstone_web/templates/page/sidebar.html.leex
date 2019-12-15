@@ -1,11 +1,17 @@
 <style>
-        .nav-link:hover
-        { 
-            color: #fff!important;
-        }
+    .nav-link:hover
+    { 
+        color: #fff!important;
+    }
+
+ #markdown a {
+  color: white!important;
+  text-decoration: underline!important;
+}
+
 </style>
 <div style="height: 100vh; display:flex; flex-direction: row;">
-    <div style="flex:.2; background-color:#373f52; color:white; text-align: center;">
+    <div style="flex:.2; background-color:#282a2f; color:white; text-align: center;">
         <h2 style="margin-top: 30px;">Demo</h2>
          <div class="dropdown">
             <style>
@@ -56,7 +62,7 @@
                 <% end %>
             </div>
             </div> 
-        <div style="text-align: left; padding-left: 30px; margin-bottom: 10px; margin-top: 40px;">
+        <div style="text-align: left; padding-left: 30px; margin-bottom: 20px; margin-top: 40px;">
             <%= for {path, index} <-  Enum.with_index(@path_url) do %>
                 <%= if index != 0 and !String.contains?(get_path(path), ".md") do " / " end %>
                     <%= if index < length(@path_url) - 1 do %>
@@ -69,7 +75,7 @@
             <% end %>
         </div>
             <%= for content <- @content_list do %>
-                <div style="text-align: left; padding-left: 40px; margin-top: 10px;">
+                <div style="text-align: left; padding-left: 40px; margin-top: 5px;">
                     <%= if Map.get(content,"type") == "file" do %>
                         <%= live_link  Map.get(content,"name"), to: "/#{Map.get(content,"path")}?ref=#{@ref}", style: "color: #{get_color(Map.get(content,"name"), @current_path)};", class: "nav-link" %>
                     <% else %>
@@ -79,9 +85,9 @@
             <% end %>
 
     </div>
-    <div style="flex:.8;  overflow:auto;">
+    <div style="flex:.8;  overflow:auto; background-color: #212127; ">
 
-        <div phx-hook="markdown" style = "margin-top: 30px; padding-left: 30px;">
+        <div id="markdown" phx-hook="markdown" style = "padding-top: 30px; padding-left: 30px; padding-right: 30px;  color: white; min-height: 100vh">
         <%= raw @markdown %>
         <script>
             window.onclick = function(e) {    
