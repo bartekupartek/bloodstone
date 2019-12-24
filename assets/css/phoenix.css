@@ -132,3 +132,8 @@ header nav a {
     margin: 2rem 1rem;
   }
 }
+@media (min-width: 495px) and (max-width:800px) {
+  .row .column[class*=" column-"] {
+      max-width: 100%;
+  }
+}
