@@ -4,14 +4,14 @@
     <div class="row">
       <div class="column" style="padding-top: 30px;">
         <h1>Software documentation using Github</h1>
-        <div class="row">
-          <div class="column" style="">
-            <button style = "background-color: transparent; border-color: white;"href="/pages/README.md?ref=v2.0">View Demo</button>
-          </div>
-      </div>
+        <h5 style = "color: rgb(153, 153, 157)">Treat your software documentation how you treat your source code.</h5>
+        <div class="row" style="display:block; text-align: center;">
+            <a style = "padding: 10px 15px 10px 15px; text-decoration: none;  border-color: white; color: white; border-color: white; border: solid 1px;" href="/pages/README.md?ref=v2.0">View Demo</a>
+        </div>
       </div>
       <div class="column column-67">
-        <img src = "https://code.visualstudio.com/assets/home/home-screenshot-mac-lg-2x.png">
+        <img src = <%= Routes.static_path(@conn, "/images/dashboard.png") %>  style = "-webkit-box-shadow: 1px 4px 12px 0px #000000; 
+box-shadow: 1px 4px 12px 0px #000000;">
       </div>
     </div>
 
@@ -39,7 +39,7 @@
       </div>
       <div class="column column-67" >
         <h3 style="margin-bottom: 10px;">Version Control</h3>
-        <h5>Easily switch version of the documentation. Each link will be taken care of.</h5>
+        <h5>Easily switch between version of the documentation. You can stop appending date to the title.</h5>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
       </div>
       <div class="column column-67">
         <h3 style="margin-bottom: 10px;">UML Diagram</h3>
-        <h5>Draw UML Diagram using Mermaid.</h5>
+        <h5>Every software requirement requires UML Diagram. With this website, you can draw using mermaid-js.</h5>
       </div>
     </div>
   </div>

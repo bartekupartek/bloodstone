@@ -2,32 +2,7 @@ defmodule BloodstoneWeb.PageController do
   use BloodstoneWeb, :controller
 
   def index(conn, _params) do
-    route = Poison.decode!(~s( [
-    {
-      "type": "directory",
-      "name": "world",
-      "children": [
-        {
-          "type": "file",
-          "name": "one.txt",
-          "children":[]
-        },
-        {
-          "type": "file",
-          "name": "two.txt",
-          "children":[]
-        }
-      ]
-    },
-    {
-      "type": "file",
-      "name": "README",
-      "children": []
-    }
-  ]
-))
-IO.inspect route
-    render(conn, "index.html", route: route)
+    render(conn, "index.html")
   end
 
   def demo(conn, %{"path" => path_array, "ref" => ref}) do
