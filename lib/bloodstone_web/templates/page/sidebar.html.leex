@@ -10,9 +10,23 @@
 }
 
 </style>
-<div style="height: 100vh; display:flex; flex-direction: row;">
-    <div style="flex:.2; background-color:#282a2f; color:white; text-align: center;">
-        <h2 style="margin-top: 30px;">Demo</h2>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+</script>
+<div style="height: 100vh; background-color: #212127;">
+
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="width:200px; background-color:#282a2f; color:white; text-align: center;" id="mySidebar">
+    <button  class="w3-bar-item w3-button w3-medium w3-hide-large" onclick="w3_close()" style="color:white; margin-bottom: 10px; text-align:right;">Close &times;</button>
+    <h2 style = "margin-top: 20px;">Demo</h2>
          <div class="dropdown">
             <style>
                     /* Dropdown Button */
@@ -55,7 +69,7 @@
                 /* Change the background color of the dropdown button when the dropdown content is shown */
                 .dropdown:hover .dropbtn {background-color: white; color: black;} 
             </style>
-            <button class="dropbtn"><%= @ref %></button>
+            <button class="dropbtn w3-button w3-small" style="padding: 0 3.0rem!important;"><%= @ref %></button>
             <div class="dropdown-content">
                 <%= for version <- @version_list do %>
                 <a href=<%= "?ref=#{Map.get(version,"name")}" %>><%= Map.get(version,"name") %></a>
@@ -85,21 +99,24 @@
             <% end %>
 
     </div>
-    <div style="flex:.8;  overflow:auto; background-color: #212127; ">
+    <div class="w3-main" style="margin-left:200px">
+        <div  class="w3-container" style="background-color: #212127; ">
+            <button style = " background-color: transparent; color: white;  border: solid 1px; border-color: transparent" class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">☰</button>
+            <div id="markdown" phx-hook="markdown" style = "padding-top: 10px; padding-left: 30px; padding-right: 30px;  color: white; min-height: 100vh">
+            <%= raw @markdown %>
+            <script>
+                window.onclick = function(e) {    
+                    if(!e.target.hasAttribute("data-phx-live-link") && e.target.href && !e.target.href.includes("?ref=")){
+                        e.preventDefault();
+                        var href = e.target.href
+                        var newHref = href + '<%= "?ref=#{@ref}" %>'
+                        window.location.href = newHref
 
-        <div id="markdown" phx-hook="markdown" style = "padding-top: 30px; padding-left: 30px; padding-right: 30px;  color: white; min-height: 100vh">
-        <%= raw @markdown %>
-        <script>
-            window.onclick = function(e) {    
-                if(!e.target.hasAttribute("data-phx-live-link") && e.target.href && !e.target.href.includes("?ref=")){
-                    e.preventDefault();
-                    var href = e.target.href
-                    var newHref = href + '<%= "?ref=#{@ref}" %>'
-                    window.location.href = newHref
-                }
+                    }
 
-            };
-        </script>
+                };
+            </script>
+            </div>
         </div>
     </div>
 </div>

@@ -20,6 +20,7 @@ Hooks.markdown = {
     }
 }
 
+
 let liveSocket = new LiveSocket("/live", Socket, { hooks: Hooks })
 liveSocket.connect()
 // Import local files

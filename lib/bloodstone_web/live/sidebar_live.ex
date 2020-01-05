@@ -78,7 +78,7 @@ defmodule BloodstoneWeb.SidebarLive do
       true -> 
         case is_hard_link do
           true -> 
-            {:ok, markdown, []} = Earmark.as_html("# Search Page")
+            {:ok, markdown, []} = Earmark.as_html("# Nothing here.")
             markdown
           false -> socket.assigns.markdown
         end

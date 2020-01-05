@@ -23,7 +23,7 @@ box-shadow: 1px 4px 12px 0px #000000;">
       <div class="column" style="text-align: center;">
         <img style="height: 100px;" src="https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg">  
       </div>
-      <div class="column column-67">
+      <div class="column column-67" style="margin-top: 20px;">
         <h3 style="margin-bottom: 10px;">Markdown</h3>
         <h5>Easy-to-read, easy-to-write plain text format.</h5>
       </div>
@@ -37,7 +37,7 @@ box-shadow: 1px 4px 12px 0px #000000;">
       <div class="column" style="text-align: center;">
         <img style="height: 100px;" src = "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png">
       </div>
-      <div class="column column-67" >
+      <div class="column column-67" style="margin-top: 20px;">
         <h3 style="margin-bottom: 10px;">Version Control</h3>
         <h5>Easily switch between version of the documentation. You can stop appending date to the title.</h5>
       </div>
@@ -51,7 +51,7 @@ box-shadow: 1px 4px 12px 0px #000000;">
       <div class="column" style="text-align: center;">
           <img style="height: 100px;" src=<%= Routes.static_path(@conn, "/images/flowchart.png") %> >
       </div>
-      <div class="column column-67">
+      <div class="column column-67" style="margin-top: 20px;">
         <h3 style="margin-bottom: 10px;">UML Diagram</h3>
         <h5>Every software requirement requires UML Diagram. With this website, you can draw using mermaid-js.</h5>
       </div>
@@ -69,23 +69,21 @@ box-shadow: 1px 4px 12px 0px #000000;">
 
     <div class = "row">
       <div class="column">
-        <div style = "display: flex">
-          <div style="flex:.2">
+        <div style = "display: flex; align-items: center;">
+          <div style="flex:.2;">
             <div style = "  
-              height: 60px;
-              width: 60px;
+              height: 45px;
+              width: 45px;
               background-color: #282a2f;
               border-radius: 50%;
-              line-height: 60px;
               float: right;
               margin-right: 20px;
               ">
-                <span style="color: white; text-align: center; width: 100%;display: inline-block; font-size: 35px; font-weight: bold;">1</span>
+                <span style="color: white; text-align: center; width: 100%; display: inline-block; font-size: 30px; font-weight: bold;">1</span>
             </div>
           </div>
           <div style = "flex:.8">
             <div style = "  
-              line-height: 60px;
               font-size: 20px;
               ">
               <span>Create a repository on Github.<span>
@@ -98,23 +96,21 @@ box-shadow: 1px 4px 12px 0px #000000;">
 
     <div class = "row">
       <div class="column">
-        <div style = "display: flex;  margin-top: 30px;">
+        <div style = "display: flex;  margin-top: 30px; align-items: center;">
           <div style="flex:.2;">
             <div style = "  
-              height: 60px;
-              width: 60px;
+              height: 45px;
+              width: 45px;
               background-color: #282a2f;
               border-radius: 50%;
-              line-height: 60px;
               float: right;
               margin-right: 20px;
               ">
-                <span style="color: white; text-align: center; width: 100%;display: inline-block; font-size: 35px; font-weight: bold;">2</span>
+                <span style="color: white; text-align: center; width: 100%;display: inline-block; font-size: 30px; font-weight: bold;">2</span>
             </div>
           </div>
           <div style = "flex:.8">
             <div style = "  
-              line-height: 60px;
               font-size: 20px;
               ">
               <span>Create a folder titled pages.<span>
@@ -127,26 +123,27 @@ box-shadow: 1px 4px 12px 0px #000000;">
 
  <div class = "row">
       <div class="column">
-        <div style = "display: flex;  margin-top: 30px;">
+        <div style = "display: flex;  margin-top: 30px; align-items: center;">
           <div style="flex:.2;">
             <div style = "  
-              height: 60px;
-              width: 60px;
+              height: 45px;
+              width: 45px;
               background-color: #282a2f;
               border-radius: 50%;
-              line-height: 60px;
+   
               float: right;
               margin-right: 20px;
+              
               ">
-                <span style="color: white; text-align: center; width: 100%;display: inline-block; font-size: 35px; font-weight: bold;">3</span>
+                <span style="color: white; text-align: center; width: 100%;display: inline-block; font-size: 30px; font-weight: bold;">3</span>
             </div>
           </div>
           <div style = "flex:.8">
             <div style = "  
-              line-height: 60px;
+       
               font-size: 20px;
               ">
-              <span>Markdown file created under pages folder will be rendered as a documentation website.<span>
+              <span>Markdown file created under the pages folder will be converted into a documentation website.<span>
             </div>
           </div>
     </div>
@@ -157,10 +154,6 @@ box-shadow: 1px 4px 12px 0px #000000;">
 
   </div>
 </div>
-
-
-
-
 
 
 
