@@ -18,7 +18,7 @@ defmodule BloodstoneWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-
+    post "/", PageController, :create
     live "/*path", SidebarLive, session: [:path]
   end
 

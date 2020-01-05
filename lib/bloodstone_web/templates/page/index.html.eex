@@ -172,14 +172,21 @@ box-shadow: 1px 4px 12px 0px #000000;">
         <h1 style= "text-align: center">Interested?</h1>
         <h5>We are still working hard to put the finishing touches. If you are interested, leave us your email and we will notify you when we are ready to launch.</h5>
       
-      <form>
-  <fieldset>
-    <label for="nameField">Email</label>
-    <input type="text" placeholder="CJ Patoilo" id="nameField">
   
-    <input class="button-primary" type="submit" value="Send">
-  </fieldset>
-</form>
+    <div class="row" style="margin-top: 50px;">
+      <div class="column column-25">
+      </div>
+      <div class="column column-50">
+      <%= form_for @changeset, Routes.page_path(@conn, :create), fn f -> %>
+        <label>
+          Email: <%= text_input f, :email %>
+        </label>
+
+        <%= submit "Submit" %>
+      <% end %>
+      </div>
+      </div>
+    </div>
 
       </div>
     </div>

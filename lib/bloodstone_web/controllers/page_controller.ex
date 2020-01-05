@@ -1,8 +1,25 @@
 defmodule BloodstoneWeb.PageController do
   use BloodstoneWeb, :controller
+  alias Bloodstone.Accounts
+  alias Bloodstone.Accounts.User
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    changeset = User.changeset(%User{})
+    render(conn, "index.html", changeset: changeset)
+  end
+
+  def create(conn, %{"user" => user_params}) do
+
+    {:ok, email} = Map.fetch(user_params, "email")
+    case String.equivalent?(email, "") do
+      true -> 
+        changeset = User.changeset(%User{})
+        render(conn, "index.html", changeset: changeset)
+      false ->
+        Accounts.create_user(user_params)
+        changeset = User.changeset(%User{})
+        render(conn, "thank_you.html")
+    end
   end
 
   def demo(conn, %{"path" => path_array, "ref" => ref}) do

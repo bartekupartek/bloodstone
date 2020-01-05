@@ -1,0 +1,12 @@
+
+<div style = "background-color: #282a2f; color:white; text-align: center; padding-top: 10vh; padding-bottom: 10vh;">
+  <div class="container">
+    <div class="row">
+      <div class="column" style="padding-top: 30px; margin-bottom: 40px;">
+        <h1>Thank You.</h1>
+        <h4>We will email you when we are ready to launch!</h4>
+        <a href="/">Go Back</a>
+    </div>
+
+  </div>
+</div>
