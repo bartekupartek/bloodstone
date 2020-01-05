@@ -18,7 +18,6 @@ defmodule BloodstoneWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/asdfklsajdf234234lkjlk", PageController, :list_user
     post "/", PageController, :create
     live "/*path", SidebarLive, session: [:path]
   end
