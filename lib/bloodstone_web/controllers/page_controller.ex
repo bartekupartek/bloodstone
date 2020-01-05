@@ -22,6 +22,11 @@ defmodule BloodstoneWeb.PageController do
     end
   end
 
+  def list_user(conn, _params) do
+    users = Accounts.list_users()
+    render(conn, "list_user.html", users: users)
+  end
+
   def demo(conn, %{"path" => path_array, "ref" => ref}) do
     path = Enum.join(path_array,"/")
     version_list = get_version_list()

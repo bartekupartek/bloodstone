@@ -9,6 +9,17 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115169227-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-115169227-5');
+</script>
+
   </head>
   <body style="margin: 0px;">
       <%= render @view_module, @view_template, assigns %>
